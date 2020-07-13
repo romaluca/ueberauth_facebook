@@ -68,7 +68,7 @@ defmodule Ueberauth.Strategy.Facebook do
       end
     rescue
       e in OAuth2.Error ->
-        set_errors!(conn, [error("invalid_code", "The code has been used or has expired! #{inspect(e)}")])
+        set_errors!(conn, [error("invalid_code", "The code has been used or has expired! #{inspect(opts)} #{inspect(e)}")])
     end
   end
 
