@@ -67,8 +67,8 @@ defmodule Ueberauth.Strategy.Facebook do
         fetch_user(conn, client, config)
       end
     rescue
-      OAuth2.Error ->
-        set_errors!(conn, [error("invalid_code", "The code has been used or has expired")])
+      e in OAuth2.Error ->
+        set_errors!(conn, [error("invalid_code", "The code has been used or has expired #{inspect(e)}")])
     end
   end
 
